@@ -1,7 +1,8 @@
 package exercise;
 
-/**
- * TODO implement
- */
-public class Table {
+
+public abstract class Table {
+		
+	public abstract void sort(String columnName);
+	
 }
