@@ -44,9 +44,44 @@ Coding guidance: Combine "clean, object-oriented, tested code" with "working sof
 
 What would you do if you had more time? Which design decisions and trade-offs did you take?
 
-* FILL-ME 1
-* FILL-ME 2
+My answer:
+I would have tried to create a system where the Tables are created in dynamic based on the first record present in the csv file.
+This can be achieved by using 
 
+public class CSVTable {
+    private String[][] csvTable = null;
+    public CSVTable(int columns) {
+        csvTable = new String[columns][2];
+    }
+    public String[][] getCSVTable() {
+        return this.csvTable;
+    }
+    public void setCSVTable(String[][] csvTable){
+        this.csvTable = csvTable;
+    }
+}
+
+CSV parser:
+    while(iterator.hasNext()){
+        record = iterator.next();
+        CSVTable csvTable = new CSVTable(record.length);
+        String[][] insertRecord = csvTable.getCSVTable();
+        for(int i = 0; i < length; i++){
+                insertRecord[i][0] = columns[i];
+                insertRecord[i][1] = record[i];
+        }
+        csvTable.setCSVTable(insertRecord);
+        csvObjects.add(csvTable);
+    }
+
+I found this approach via searching over internet, hence not implementing here as this is something I didn't know before hand.
+
+If I had more time. I would have definitely learned and implemented the above approach to make our code generic.
+
+
+Remaining, I need to clean the structure of the code, by segregating Entity objects, into a group.
+
+Added some unwanted dependencies to POM file. need to clean that up.
 
 Have fun!
 
